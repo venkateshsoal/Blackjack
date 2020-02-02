@@ -43,11 +43,11 @@ function getFields(input, fields) {
 }
 
 function Start() {
-    var delear_arr = Delear();
-    var player_arr = Player();
-    document.getElementById("demo1").innerHTML = JSON.stringify(delear_arr);
+    var delear_arr = JSON.stringify(Delear());
+    var player_arr = JSON.stringify(Player());
+    document.getElementById("demo1").innerHTML = 'DELEAR CARDS and COUNT : '+delear_arr;
     //console.log ('ssssss',delear_arr);
-    document.getElementById("demo2").innerHTML = JSON.stringify(player_arr);
+    document.getElementById("demo2").innerHTML = 'PLAYER CARDS and COUNT : '+player_arr;
     //console.log('AAAAAAA',delear_arr[0]);
     //console.log('BBBBBBB',delear_arr[1]);
     //console.log('CCCCCCC',player_arr[0]);
@@ -63,6 +63,8 @@ function Start() {
     if(player_arr[0] == 21 && delear_arr[0] == 21) {
         document.getElementById("demo5").innerHTML = "ITS PUSH TIE MATCH!!!!!!!!!!GAME ENDS";
     }
+
+    document.getElementById("myBtn").disabled = true;
 }
 
 function shuffle() {
@@ -160,6 +162,9 @@ function Stand() {
     if(boo = true) {
         document.getElementById("demo6").innerHTML = 'PLAYER COUNT: ' +game_p_count +' ITS DELEAR TURN';
         boo = false; 
+        if(game_d_count == 21) {
+            document.getElementById("demo4").innerHTML = "DELEAR WON!!!!!!!!!!!!!!GAME ENDS";
+        }
     } else {
         document.getElementById("demo7").innerHTML = 'DELEAR COUNT: ' +game_d_count +' PLAYER WON GAME';
         if(game_p_count == game_d_count) {
