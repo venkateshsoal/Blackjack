@@ -10,6 +10,7 @@ var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
     //Player();
     //Start();
     var game_p_count;
+    var game_d_count;
     //Player();
     //Hit();
     //Hit();
@@ -43,23 +44,26 @@ function getFields(input, fields) {
 }
 
 function Start() {
-    var delear_arr = JSON.stringify(Delear());
-    var player_arr = JSON.stringify(Player());
-    document.getElementById("demo1").innerHTML = 'DELEAR CARDS and COUNT : '+delear_arr;
-    //console.log ('ssssss',delear_arr);
-    document.getElementById("demo2").innerHTML = 'PLAYER CARDS and COUNT : '+player_arr;
-    //console.log('AAAAAAA',delear_arr[0]);
-    //console.log('BBBBBBB',delear_arr[1]);
-    //console.log('CCCCCCC',player_arr[0]);
-    //console.log('DDDDDDD',player_arr[1]);
+    var delear_arr = Delear();
+    var player_arr = Player();
+    document.getElementById("demo1").innerHTML = 'DELEAR CARDS and COUNT : '+JSON.stringify(delear_arr) ;
+    //console.log ('dddddd',delear_arr);
+    //console.log ('pppppp',player_arr);
+    document.getElementById("demo2").innerHTML = 'PLAYER CARDS and COUNT : '+JSON.stringify(player_arr);
+    // console.log('AAAAAAA',delear_arr[0]);
+    // console.log('BBBBBBB',delear_arr[1]);
+    // console.log('CCCCCCC',player_arr[0]);
+    // console.log('DDDDDDD',player_arr[1]);
+    // console.log('EEEEEEE',delear_arr[2]);
+    // console.log('FFFFFFF',player_arr[2]);
     document.getElementById("demo3").innerHTML = "player has to press HIT or STAND";
 
     if(player_arr[0] == 21 && delear_arr[0] < 21) {
         document.getElementById("demo5").innerHTML = "PLAYER WON THE GAME!!!!!!!!!!GAME ENDS";
     }
-    if(player_arr[0] < 21 && delear_arr[0] == 21) {
-        document.getElementById("demo5").innerHTML = "DELEAR WON THE GAME!!!!!!!!!!GAME ENDS";
-    }
+    // if(player_arr[0] < 21 && delear_arr[0] == 21) {
+    //     document.getElementById("demo5").innerHTML = "DELEAR WON THE GAME!!!!!!!!!!GAME ENDS";
+    // }
     if(player_arr[0] == 21 && delear_arr[0] == 21) {
         document.getElementById("demo5").innerHTML = "ITS PUSH TIE MATCH!!!!!!!!!!GAME ENDS";
     }
@@ -87,7 +91,7 @@ function Delear() {
         delear_deck.push(dcards);
         count++;
     }
-    var game_d_count = getFields(delear_deck, "Weight");
+    game_d_count = getFields(delear_deck, "Weight");
     //console.log('aaaaaaa',game_d_count);
     return [game_d_count , delear_deck] ;
     //document.getElementById("greet").innerHTML = "good morningal";
@@ -163,7 +167,7 @@ function Stand() {
         document.getElementById("demo6").innerHTML = 'PLAYER COUNT: ' +game_p_count +' ITS DELEAR TURN';
         boo = false; 
         if(game_d_count == 21) {
-            document.getElementById("demo4").innerHTML = "DELEAR WON!!!!!!!!!!!!!!GAME ENDS";
+            document.getElementById("demo4").innerHTML = 'DELEAR COUNT: ' +game_d_count +"DELEAR WON!!!!!!!GAME ENDS";
         }
     } else {
         document.getElementById("demo7").innerHTML = 'DELEAR COUNT: ' +game_d_count +' PLAYER WON GAME';
